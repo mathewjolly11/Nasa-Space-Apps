@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/signUp.css">
     
-    <title>Sign Up</title>
+    <title>Review</title>
 </head>
 <body class="bg-black">
 
@@ -58,7 +58,7 @@
                   <a class="text-white link-body-emphasis m-0 active" href="./about.html">About Us</a>
                 </button>
                 <button class="btn">
-                  <a class="btn btn-outline-primary btn-signup" href="#">Sign Up</a>
+                  <a class="btn btn-outline-primary btn-signup" href="#">Review</a>
                 </button>
           </div>
       </div>
@@ -78,53 +78,24 @@
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
   
-                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"></p>
   
-                  <form class="mx-1 mx-md-4">
-  
+                  <h1>Review</h1>
+
+                  <form id="sumbit" action="">
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class=" fas fa-user fa-lg me-3 fa-fw"></i>
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                        <input type="text" id="form3Example1c" class="form-control" />
-                        <label class="form-label" for="form3Example1c">Your Name</label>
+                        <label class="form-label" for="reviewInpu">Name</label>
+                        <input type="text" id="reviewInput" name="Name" class="form-control" />
+                        <label class="form-label" for="reviewInput">Email</label>
+                        <input type="text" id="reviewInput" name="Email" class="form-control" />
+                        <label class="form-label" for="reviewInput">Your Review</label>
+                        
+                        <input type="text" id="reviewInput" name="Message" class="form-control" style="resize: both;" />
+                      
                       </div>
                     </div>
-  
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                        <input type="email" id="form3Example3c" class="form-control" />
-                        <label class="form-label" for="form3Example3c">Your Email</label>
-                      </div>
-                    </div>
-  
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                        <input type="password" id="form3Example4c" class="form-control" />
-                        <label class="form-label" for="form3Example4c">Password</label>
-                      </div>
-                    </div>
-  
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                        <input type="password" id="form3Example4cd" class="form-control" />
-                        <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                      </div>
-                    </div>
-  
-                    <div class="form-check d-flex justify-content-center mb-5">
-                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                      <label class="form-check-label" for="form2Example3">
-                        I agree all statements in <a href="#!">Terms of service</a>
-                      </label>
-                    </div>
-  
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Register</button>
-                    </div>
-  
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
                   </form>
   
                 </div>
@@ -174,6 +145,42 @@
   <!-- Copyright -->
 </footer>
 
+<div class="modal fade" id="successPopup" tabindex="-1" aria-labelledby="successPopupLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Success</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              Form submitted successfully!
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a href="#" class="btn btn-primary">Continue</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="errorPopup" tabindex="-1" aria-labelledby="errorPopupLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Error</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              Something went wrong. Please try again.
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a href="#" class="btn btn-primary">Try Again</a>
+          </div>
+      </div>
+  </div>
+</div>
+
 </div>
 
 
@@ -181,5 +188,24 @@
 
 
     <script src="../js/home.js"></script>
+    <script>
+      $("#submit-form").submit((e)=>{
+          e.preventDefault()
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbwJJc8vjxl0-oHFIBs94xQgfRlHNLB1sYvZyKwFCmiexm0b3XcGjmRu-0kBd3DoUdOxww/exec",
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function (response){
+                  alert("Form submitted successfully")
+                  window.location.reload()
+                  //window.location.href="https://google.com"
+              },
+              error:function (err){
+                  alert("Something Error")
+  
+              }
+          })
+      })
+  </script>
 </body>
 </html>
